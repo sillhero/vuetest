@@ -2,7 +2,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <Header :addTodo="addTodo"/>
-      <List :todos="todos" :deleteTodo="deleteTodo"/>
+      <List :todos="todos" :deleteTodo="deleteTodo" :checkTodo="checkTodo"/>
       <Footer/>
     </div>
   </div>
@@ -43,6 +43,14 @@ import Footer from './components/Footer.vue'
       deleteTodo(id) {
         console.log("进行删除");
         this.todos = this.todos.filter(t => t.id !== id);
+      },
+      // 用于勾选todo对象
+      checkTodo(id) {
+        this.todos.forEach(t => {
+          if (t.id === id) {
+            t.done = !t.done;
+          }
+        });
       }
     }
   };

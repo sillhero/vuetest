@@ -1,7 +1,7 @@
 <template>
   <li>
     <label> 
-      <input type="checkbox" />
+      <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)"/>
       <span>{{todo.title}}</span> 
     </label>
     <button class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
@@ -10,13 +10,19 @@
 
 <script>
   export default {
+    // eslint-disable-next-line
     name:'Item',
-    props:['todo', 'deleteTodo'],
+    props:['todo', 'deleteTodo', 'checkTodo'],
     methods: {
+      // 删除按钮的回调
       handleDelete(id) {
         if(confirm('确定删除吗？')){
           this.deleteTodo(id);
         }
+      },
+      // 勾选框的回调
+      handleCheck(id) {
+        this.checkTodo(id);
       }
     }
   }
