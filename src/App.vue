@@ -3,7 +3,7 @@
     <div class="todo-wrap">
       <Header :addTodo="addTodo"/>
       <List :todos="todos" :deleteTodo="deleteTodo" :checkTodo="checkTodo"/>
-      <Footer/>
+      <Footer :todos="todos"/>
     </div>
   </div>
 </template>
@@ -52,6 +52,7 @@ import Footer from './components/Footer.vue'
           }
         });
       }
+      // 底部计算
     }
   };
 </script>
