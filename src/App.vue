@@ -3,7 +3,7 @@
     <div class="todo-wrap">
       <Header :addTodo="addTodo"/>
       <List :todos="todos" :deleteTodo="deleteTodo" :checkTodo="checkTodo"/>
-      <Footer :todos="todos"/>
+      <Footer :todos="todos" :checkAllTodo="checkAllTodo"/>
     </div>
   </div>
 </template>
@@ -51,8 +51,12 @@ import Footer from './components/Footer.vue'
             t.done = !t.done;
           }
         });
+      },
+      // 用于全选
+      checkAllTodo(done) {
+        this.todos.forEach(t => t.done = done);
       }
-      // 底部计算
+
     }
   };
 </script>
