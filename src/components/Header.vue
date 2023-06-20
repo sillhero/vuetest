@@ -13,7 +13,6 @@
 
   export default {
     name: "Header",
-    props: ['addTodo'],
     methods: {
       // 按下回车的回调函数
       handleAdd(event) {
@@ -23,7 +22,8 @@
           // 2、 将用户输入的title, 包装成一个todo对象
           const todoObj = {id:nanoid(), title:value, done:false} 
           // 将todo对象传给APP组件
-          this.addTodo(todoObj);
+          // this.addTodo(todoObj);
+          this.$emit('addTodo', todoObj);
           // 清空输入
           event.target.value = '';
         } else {
